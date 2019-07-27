@@ -119,7 +119,7 @@ server <- shinyServer(function(input, output, session) {
         rownames = FALSE,
         selection=list(mode="single",target='row'),options = list(autoWidth=T,columnDefs=list(list(width='100px',targets="_all")),searching = FALSE, lengthChange = FALSE),colnames=c("ID","FirmName","Address","ContactNo","GSTNo","FSSAIno","MSMEno","Panno","IEC","Email","Web","Desc")
     )
-    
+    #observeEvent(input$FirmList_row_selection)
     
 })
 
