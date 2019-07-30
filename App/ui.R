@@ -51,6 +51,16 @@ ui <- dashboardPage(skin="black",
           background-color: #000000;
         }'))),
                                   source("UI/FirmInfo.R",local=F),
+                                  source("UI/CustomerInfo.R",local=F),
+                                  source("UI/CustomerCatInfo.R",local=F),
+                                  source("UI/SellerInfo.R",local=F),
+                                  source("UI/SellerCatInfo.R",local=F),
+                                  source("UI/ProductInfo.R",local=F),
+                                  source("UI/ProductCatInfo.R",local=F),
+                                  source("UI/ExpenseInfo.R",local=F),
+                                  source("UI/ExpenseCatInfo.R",local=F),
+                                  source("UI/SpareInfo.R",local=F),
+                                  source("UI/SpareCatInfo.R",local=F),
                                   tabItems(
                                       tabItem(
                                           tabName = "FirmInfo",
