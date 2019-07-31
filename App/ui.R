@@ -7,6 +7,7 @@ library(DT)
 library(shinyjs)
 library(shinyBS)
 library(shinyWidgets)
+library(rhandsontable)
 
 ui <- dashboardPage(skin="black",
                     dashboardHeader(title = span(img(src="NameOnly.PNG", width = 190))),
@@ -23,7 +24,7 @@ ui <- dashboardPage(skin="black",
                                      menuSubItem(tabName="BrokerInfo","Broker Info",icon=icon("handshake", lib = "glyphicon")),
                                      menuSubItem(tabName="InvestmentInfo","Investment Info",icon=icon("briefcase", lib = "glyphicon")),
                                      menuSubItem(tabName="AssetInfo","Asset Info",icon=icon("briefcase", lib = "glyphicon")),
-                                     menuSubItem(tabName="PartnerInfo","Partners Info",icon=icon("handshake", lib = "glyphicon")),
+                                     menuSubItem(tabName="Partners_OwnerInfo","Partners_OwnerInfo",icon=icon("handshake", lib = "glyphicon")),
                                      menuSubItem(tabName="TaxInfo","Tax Info",icon=icon("list", lib = "glyphicon"))
                             ),
                             menuItem(tabName = "Entries", "Entries", icon = icon("table"),
@@ -34,8 +35,8 @@ ui <- dashboardPage(skin="black",
                                      menuSubItem(tabName="Production","Production",icon=icon("car")),
                                      menuSubItem(tabName="Investment","Investment",icon=icon("car")),
                                      menuSubItem(tabName="Expense","Expense",icon=icon("car")),
-                                     menuSubItem(tabName="Transfers","Transfers",icon=icon("car")),
-                                     menuSubItem(tabName="PartnerInfo","Partners Info",icon=icon("car"))
+                                     menuSubItem(tabName="Transfers","Transfers",icon=icon("car"))
+                                     #menuSubItem(tabName="Partners_OwnerInfo","Partners Info",icon=icon("car"))
                             ),
                             menuItem(tabName = "Analysis", "Analysis", icon = icon("graph")),
                             menuItem(tabName = "SalesCatalog", "Sales Catelog", icon = icon("graph")),
@@ -61,10 +62,22 @@ ui <- dashboardPage(skin="black",
                                   source("UI/ExpenseCatInfo.R",local=F),
                                   source("UI/SpareInfo.R",local=F),
                                   source("UI/SpareCatInfo.R",local=F),
+                                  source("UI/FinanceInfo.R",local=F),
+                                  source("UI/FinanceCatInfo.R",local=F),
+                                  source("UI/InvestmentInfo.R",local=F),
+                                  source("UI/InvestmentCatInfo.R",local=F),
+                                  source("UI/BrokerInfo.R",local=F),
+                                  source("UI/BrokerCatInfo.R",local=F),
+                                  source("UI/AssetInfo.R",local=F),
+                                  source("UI/AssetCatInfo.R",local=F),
+                                  # source("UI/TaxInfo.R",local=F),
+                                  # source("UI/TaxCatInfo.R",local=F),
+                                  # source("UI/PartnerInfo.R",local=F),
+                                  # source("UI/PartnerCatInfo.R",local=F),
                                   tabItems(
                                       tabItem(
                                           tabName = "FirmInfo",
-                                          box(width = 12,title = "Firm List",status="success", ribbon = TRUE, title_side = "top right",
+                                          box(width = 12,title = "Firm List",status="success", 
                                               selectInput("EditFirmOptions","Select Firm to edit",choices=""),
                                               checkboxInput("FirmEditMode","Edit Mode",value = F),
                                               actionBttn( inputId = "FirmAdd", label = "Add New Firm", color = "success", style = "gradient",size='sm' ),
@@ -229,18 +242,14 @@ ui <- dashboardPage(skin="black",
                                             )
                                     ),
                                     tabItem(
-                                            tabName = "PartnerInfo",
-                                            tabBox(id="PartnerDetails",
-                                                   tabPanel("Categories",
-                                                            actionBttn( inputId = "PartnerCatAdd", label = "Add New Category", color = "primary", style = "gradient",size='sm' ),
-                                                            checkboxInput("PartnerCatEditMode","Edit Mode",value = F),
-                                                            numericInput("PartnerEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("PartnerCatlist"),style="font-size:100%;width=100%")),
-                                                   tabPanel("Details",
+                                            tabName = "Partners_OwnerInfo",
+                                            box(id="PartnerDetails",width = 12,title = "Owners List",status="success",
                                                             actionBttn( inputId = "PartnerDetailAdd", label = "Add Partner Details", color = "primary", style = "gradient",size='sm' ),
                                                             checkboxInput("PartnerDetailEditMode","Edit Mode",value = F),
                                                             numericInput("PartnerDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("PartnerDetaillist"),style="font-size:100%;width=100%"))
+                                                rHandsontableOutput("PartnerDetaillist")            
+                                                #div(DT::dataTableOutput("PartnerDetaillist"),style="font-size:100%;width=100%")
+                                                )
                                             )
                                     )
                                     )
@@ -248,7 +257,7 @@ ui <- dashboardPage(skin="black",
                                   
                                   
                      
- )
+ 
 
 
 
