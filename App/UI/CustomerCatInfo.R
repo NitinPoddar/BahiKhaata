@@ -1,11 +1,11 @@
 
 bsModal("CustCatPopUp", "Categories",trigger="CustCatAdd",size="small",
         div(
-          id = "form",
+          id = "CustCatform",
           actionBttn( inputId = "CustCatDelete", label = "Delete", color = "danger", style = "simple",size='sm' ),
           br(),
           div(style="width: 50px;",numericInput("CustCatID","ID*:",value="")),
-          div(style="display: inline-block;vertical-align:top;width: 200px;",textInput("CustomerCategoryName","Add Customer Category*:")),
+          div(style="display: inline-block;vertical-align:top;width: 200px;",textInput("CustCategoryName","Add Customer Category*:")),
           br(),
           div(style="display: inline-block;vertical-align:top;width: 150px;",textAreaInput("CustCatDescription","Description:",width=200)),
           br(),

@@ -5,8 +5,8 @@ account: arbritrage
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1052091
-bundleId: 2279076
+bundleId: 2288069
 url: https://arbritrage.shinyapps.io/BahiKhaata/
-when: 1564559081.62619
+when: 1564820998.85303
 asMultiple: FALSE
 asStatic: FALSE

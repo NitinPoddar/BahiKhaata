@@ -3,7 +3,6 @@ shinyjs::hide("FirmDelete")
 shinyjs::hide("EditFirmOptions")
 FirmList<-readRDS("FirmList.rds")
 updateNumericInput(session,"FirmID","ID*:",value=max(as.numeric(FirmList$FirmID))+1)
-output$FirmList <- renderTable(FirmList)
 observe({
     mandatoryFilled <-
         vapply(FirmMandatory,

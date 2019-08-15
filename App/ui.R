@@ -8,9 +8,16 @@ library(shinyjs)
 library(shinyBS)
 library(shinyWidgets)
 library(rhandsontable)
-
 ui <- dashboardPage(skin="black",
-                    dashboardHeader(title = span(img(src="NameOnly.PNG", width = 190))),
+                    dashboardHeader(title = span(img(src="NameOnly.PNG", width = 190)),
+                    dropdownMenu(type="message"),
+                    dropdownMenu(type = "notifications"),
+                    dropdownMenu(type = "tasks", badgeStatus = "success",
+                                 taskItem(value = 50, color = "green","Documentation"),
+                                 taskItem(value = 10, color = "aqua","Project BahiKhaata"),
+                                 taskItem(value = 0, color = "yellow","Server deployment"),
+                                taskItem(value = 15, color = "red","Overall project"))),
+                    
                     dashboardSidebar(
                         sidebarMenu(
                             menuItem(tabName = "Update Info", "Add Info", icon = icon("car"),
@@ -39,7 +46,7 @@ ui <- dashboardPage(skin="black",
                                      #menuSubItem(tabName="Partners_OwnerInfo","Partners Info",icon=icon("car"))
                             ),
                             menuItem(tabName = "Analysis", "Analysis", icon = icon("graph")),
-                            menuItem(tabName = "SalesCatalog", "Sales Catelog", icon = icon("graph")),
+                            menuItem(tabName = "EOutlet", "E-Outlet", icon = icon("cart"),badgeLabel = "new", badgeColor = "blue"),
                             menuItem(tabName = "Prediction", "Prediction", icon = icon("graph"))
                         )
                     ),
@@ -70,10 +77,9 @@ ui <- dashboardPage(skin="black",
                                   source("UI/BrokerCatInfo.R",local=F),
                                   source("UI/AssetInfo.R",local=F),
                                   source("UI/AssetCatInfo.R",local=F),
-                                  # source("UI/TaxInfo.R",local=F),
+                                  source("UI/PartnerInfo.R",local=F),
                                   # source("UI/TaxCatInfo.R",local=F),
                                   # source("UI/PartnerInfo.R",local=F),
-                                  # source("UI/PartnerCatInfo.R",local=F),
                                   tabItems(
                                       tabItem(
                                           tabName = "FirmInfo",
@@ -89,8 +95,7 @@ ui <- dashboardPage(skin="black",
                                         tabPanel("Categories",
                                         actionBttn( inputId = "CustCatAdd", label = "Add New Category", color = "primary", style = "gradient",size='sm' ),
                                         checkboxInput("CustCatEditMode","Edit Mode",value = F),
-                                        numericInput("CustEditId",label="abc",value=""),
-                                        div(DT::dataTableOutput("CustCatlist"),style="font-size:100%;width=100%")),
+                                        div(DT::dataTableOutput("CustCatList"),style="font-size:100%;width=100%")),
                                         tabPanel("Details",
                                                  actionBttn( inputId = "CustDetailAdd", label = "Add Customer Details", color = "primary", style = "gradient",size='sm' ),
                                                  checkboxInput("CustDetailEditMode","Edit Mode",value = F),
@@ -247,8 +252,8 @@ ui <- dashboardPage(skin="black",
                                                             actionBttn( inputId = "PartnerDetailAdd", label = "Add Partner Details", color = "primary", style = "gradient",size='sm' ),
                                                             checkboxInput("PartnerDetailEditMode","Edit Mode",value = F),
                                                             numericInput("PartnerDetailId",label="abc",value=""),
-                                                rHandsontableOutput("PartnerDetaillist")            
-                                                #div(DT::dataTableOutput("PartnerDetaillist"),style="font-size:100%;width=100%")
+                                                #rHandsontableOutput("PartnerDetaillist")            
+                                                div(DT::dataTableOutput("PartnerDetaillist"),style="font-size:100%;width=100%")
                                                 )
                                             )
                                     )
