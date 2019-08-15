@@ -97,10 +97,9 @@ ui <- dashboardPage(skin="black",
                                         checkboxInput("CustCatEditMode","Edit Mode",value = F),
                                         div(DT::dataTableOutput("CustCatList"),style="font-size:100%;width=100%")),
                                         tabPanel("Details",
-                                                 actionBttn( inputId = "CustDetailAdd", label = "Add Customer Details", color = "primary", style = "gradient",size='sm' ),
-                                                 checkboxInput("CustDetailEditMode","Edit Mode",value = F),
-                                                 numericInput("CustDetailId",label="abc",value=""),
-                                                 div(DT::dataTableOutput("CustDetaillist"),style="font-size:100%;width=100%"))
+                                                 actionBttn( inputId = "CustomerAdd", label = "Add Customer Details", color = "primary", style = "gradient",size='sm' ),
+                                                 checkboxInput("CustomerEditMode","Edit Mode",value = F),
+                                                 div(DT::dataTableOutput("CustomerList"),style="font-size:100%;width=100%"))
                                                 )
                                                                            
                                         ),
@@ -110,13 +109,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "SellCatAdd", label = "Add New Category", color = "warning", style = "gradient",size='sm' ),
                                                             checkboxInput("SellCatEditMode","Edit Mode",value = F),
-                                                            numericInput("SellEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("SellCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("SellCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "SellDetailAdd", label = "Add Seller Details", color = "warning", style = "gradient",size='sm' ),
-                                                            checkboxInput("SellDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("SellDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("SellDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "SellerAdd", label = "Add Seller Details", color = "warning", style = "gradient",size='sm' ),
+                                                            checkboxInput("SellerEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("SellerList"),style="font-size:100%;width=100%"))
                                             )
                                             
                                     ),
@@ -126,13 +123,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "ProdCatAdd", label = "Add New Category", color = "royal", style = "gradient",size='sm' ),
                                                             checkboxInput("ProdCatEditMode","Edit Mode",value = F),
-                                                            numericInput("ProdEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("ProdCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("ProdCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "ProdDetailAdd", label = "Add Product Details", color = "royal", style = "gradient",size='sm' ),
-                                                            checkboxInput("ProdDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("ProdDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("ProdDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "ProductAdd", label = "Add Product Details", color = "royal", style = "gradient",size='sm' ),
+                                                            checkboxInput("ProductEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("ProductList"),style="font-size:100%;width=100%"))
                                             )
                                             
                                     ),
@@ -142,13 +137,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "ExpCatAdd", label = "Add New Category", color = "danger", style = "gradient",size='sm' ),
                                                             checkboxInput("ExpCatEditMode","Edit Mode",value = F),
-                                                            numericInput("ExpEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("ExpCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("ExpCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "ExpDetailAdd", label = "Add Expense Details", color = "danger", style = "gradient",size='sm' ),
-                                                            checkboxInput("ExpDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("ExpDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("ExpDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "ExpenseAdd", label = "Add Expense Details", color = "danger", style = "gradient",size='sm' ),
+                                                            checkboxInput("ExpenseEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("ExpenseList"),style="font-size:100%;width=100%"))
                                                 )
 
                                            ),
@@ -158,13 +151,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "FinCatAdd", label = "Add New Category", color = "success", style = "gradient",size='sm' ),
                                                             checkboxInput("FinCatEditMode","Edit Mode",value = F),
-                                                            numericInput("FinEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("FinCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("FinCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "FinDetailAdd", label = "Add Finance Details", color = "success", style = "gradient",size='sm' ),
-                                                            checkboxInput("FinDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("FinDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("FinDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "FinanceAdd", label = "Add Finance Details", color = "success", style = "gradient",size='sm' ),
+                                                            checkboxInput("FinanceEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("FinanceList"),style="font-size:100%;width=100%"))
                                             )
 
                                     ),
@@ -174,13 +165,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "SpareCatAdd", label = "Add New Category", color = "default", style = "gradient",size='sm' ),
                                                             checkboxInput("SpareCatEditMode","Edit Mode",value = F),
-                                                            numericInput("SpareEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("SpareCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("SpareCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "SpareDetailAdd", label = "Add Spare Details", color = "default", style = "gradient",size='sm' ),
-                                                            checkboxInput("SpareDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("SpareDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("SpareDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "SpareAdd", label = "Add Spare Details", color = "default", style = "gradient",size='sm' ),
+                                                            checkboxInput("SpareEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("SpareList"),style="font-size:100%;width=100%"))
                                             )
                                             ),
                                     tabItem(
@@ -189,13 +178,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "InvestCatAdd", label = "Add New Category", color = "royal", style = "gradient",size='sm' ),
                                                             checkboxInput("InvestCatEditMode","Edit Mode",value = F),
-                                                            numericInput("InvestEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("InvestCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("InvestCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "InvestDetailAdd", label = "Add Investment Details", color = "royal", style = "gradient",size='sm' ),
-                                                            checkboxInput("InvestDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("InvestDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("InvestDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "InvestmentAdd", label = "Add Investment Details", color = "royal", style = "gradient",size='sm' ),
+                                                            checkboxInput("InvestmentEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("InvestmentList"),style="font-size:100%;width=100%"))
                                             )
 
                                     ),
@@ -205,13 +192,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "BrokerCatAdd", label = "Add New Category", color = "warning", style = "gradient",size='sm' ),
                                                             checkboxInput("BrokerCatEditMode","Edit Mode",value = F),
-                                                            numericInput("BrokerEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("BrokerCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("BrokerCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "BrokerDetailAdd", label = "Add Broker Details", color = "warning", style = "gradient",size='sm' ),
-                                                            checkboxInput("BrokerDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("BrokerDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("BrokerDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "BrokerAdd", label = "Add Broker Details", color = "warning", style = "gradient",size='sm' ),
+                                                            checkboxInput("BrokerEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("BrokerList"),style="font-size:100%;width=100%"))
                                             )
 
                                     ),
@@ -221,13 +206,11 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "AssetCatAdd", label = "Add New Category", color = "success", style = "gradient",size='sm' ),
                                                             checkboxInput("AssetCatEditMode","Edit Mode",value = F),
-                                                            numericInput("AssetEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("AssetCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("AssetCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "AssetDetailAdd", label = "Add Asset Details", color = "success", style = "gradient",size='sm' ),
-                                                            checkboxInput("AssetDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("AssetDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("AssetDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "AssetAdd", label = "Add Asset Details", color = "success", style = "gradient",size='sm' ),
+                                                            checkboxInput("AssetEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("AssetList"),style="font-size:100%;width=100%"))
                                             )
 
                                     ),
@@ -237,23 +220,19 @@ ui <- dashboardPage(skin="black",
                                                    tabPanel("Categories",
                                                             actionBttn( inputId = "TaxCatAdd", label = "Add New Category", color = "danger", style = "gradient",size='sm' ),
                                                             checkboxInput("TaxCatEditMode","Edit Mode",value = F),
-                                                            numericInput("TaxEditId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("TaxCatlist"),style="font-size:100%;width=100%")),
+                                                            div(DT::dataTableOutput("TaxCatList"),style="font-size:100%;width=100%")),
                                                    tabPanel("Details",
-                                                            actionBttn( inputId = "TaxDetailAdd", label = "Add Tax Details", color = "danger", style = "gradient",size='sm' ),
-                                                            checkboxInput("TaxDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("TaxDetailId",label="abc",value=""),
-                                                            div(DT::dataTableOutput("TaxDetaillist"),style="font-size:100%;width=100%"))
+                                                            actionBttn( inputId = "TaxAdd", label = "Add Tax Details", color = "danger", style = "gradient",size='sm' ),
+                                                            checkboxInput("TaxEditMode","Edit Mode",value = F),
+                                                            div(DT::dataTableOutput("TaxList"),style="font-size:100%;width=100%"))
                                             )
                                     ),
                                     tabItem(
                                             tabName = "Partners_OwnerInfo",
                                             box(id="PartnerDetails",width = 12,title = "Owners List",status="success",
-                                                            actionBttn( inputId = "PartnerDetailAdd", label = "Add Partner Details", color = "primary", style = "gradient",size='sm' ),
-                                                            checkboxInput("PartnerDetailEditMode","Edit Mode",value = F),
-                                                            numericInput("PartnerDetailId",label="abc",value=""),
-                                                #rHandsontableOutput("PartnerDetaillist")            
-                                                div(DT::dataTableOutput("PartnerDetaillist"),style="font-size:100%;width=100%")
+                                                            actionBttn( inputId = "PartnerAdd", label = "Add Partner Details", color = "primary", style = "gradient",size='sm' ),
+                                                            checkboxInput("PartnerEditMode","Edit Mode",value = F),
+                                                div(DT::dataTableOutput("PartnerList"),style="font-size:100%;width=100%")
                                                 )
                                             )
                                     )
