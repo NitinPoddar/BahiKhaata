@@ -1,11 +1,4 @@
-# tabItem(
-#         tabName = "FirmInfo",
-#         box(width = 12,title = "Firm List",status="success", ribbon = TRUE, title_side = "top right",
-#             selectInput("EditFirmOptions","Select Firm to edit",choices=""),
-#             checkboxInput("FirmEditMode","Edit Mode",value = F),
-#             actionBttn( inputId = "FirmAdd", label = "Add New Firm", color = "success", style = "gradient",size='sm' ),
-#             div(DT::dataTableOutput("FirmList"),style="font-size:100%;width=100%")
-#         ))
+
 bsModal("firmPopUp", "Firm Details",trigger="FirmAdd",size="small",
         div(
             id = "form",
@@ -38,10 +31,9 @@ bsModal("firmPopUp", "Firm Details",trigger="FirmAdd",size="small",
             br(),
             div(style="display: inline-block;vertical-align:top;width: 150px;",textAreaInput("FirmDescription","Description:",width=200)),
             br(),
-            fileInput("FirmLogo","Upload Logo"),
+            fileInput("FirmLogo","Upload Logo",accept = c('image/png', 'image/jpeg')),
             br(),
             actionBttn( inputId = "FirmSubmit", label = "Submit", color = "success", style = "gradient",size='sm' )
-            #actionButton("FirmSubmit", "Submit", class = "btn-primary")
             ),
         shinyjs::hidden(
 

@@ -15,12 +15,17 @@ ProdCatMandatory<-c("ProdCatID","ProdCategoryName")
 CustomerMandatory<-c("CustomerID","CustomerName")
 SellerMandatory<-c("SellerID","SellerName")
 ProductMandatory<-c("ProductID","ProductName")
+SalesItemMandatory<-c("ItemNumber","ItemName","NoofPkg","QtyPerPkg","TotalQty","PricePerUnits","SalesGST","SalesAmount")
 
 FirmFields<-c("FirmID","FirmName","FirmAddress","FirmContactNo","FirmGSTNo","FirmFSSAIno","FirmMSMEno","FirmPanno","IEC","FirmEmailAddress","FirmWebAddress","FirmDescription")
+SalesItemFields<-c("ItemNumberIn","ItemNameIn","NoofPkg","QtyPerPkg","TotalQtyIn","PricePerUnits","SalesGSTIn","SalesAmountIn")
+
+FirmCOlFields<-c("ID","Name","Address","PhoneNo","GSTno","FSSAIno","MSMEno","PANno","IEC","Email","Web","Description")
 CustCatFields<-c("CustCatID","CustCategoryName","CustCatDescription")
 CatColFields<-c("ID","Category","Description")
 SellCatFields<-c("SellCatID","SellCategoryName","SellCatDescription")
 ProdCatFields<-c("ProdCatID","ProdCategoryName","ProdCatDescription")
+SalesItemColFields<-c("No","Item","NoofPkg","QtyPerPkg","TotalQty","PricePerQty","GST","Amount")
 
 CustomerFields<-c("CustomerID","CustomerName","CustomerCategory","CustomerAddress","CustomerContactNo","CustomerGSTNo","CustomerEmailAddress","CustomerPassword")
 CustomerColFields<-c("ID","Name","Category","Address","PhoneNo","GSTno","Email","Password","AddedOn","LastModifiedOn")
@@ -44,7 +49,7 @@ ImageData<-function(inFile,path,name)
 {
 if (is.null(inFile))
     return()
-file.copy(inFile$datapath, file.path(path,paste0(name,"_",inFile$name)))
+file.copy(inFile$datapath, file.path(path,name))
 }
 labelMandatory <- function(label) {
     tagList(
@@ -64,7 +69,11 @@ server <- shinyServer(function(input, output, session) {
                            FirmListOut=data.table(readRDS("FirmList.rds")),
                            CustomerListOut=data.table(readRDS("CustomerList.rds")),
                            SellerListOut=data.table(readRDS("SellerList.rds")),
-                           ProductListOut=data.table(readRDS("ProductList.rds"))
+                           ProductListOut=data.table(readRDS("ProductList.rds")),
+                           ItemListOut=data.table(readRDS("ItemList.rds")),
+                           SalesListOut=data.table(readRDS("SalesList.rds")),
+                           ItemNo=0,
+                           SalesFilteredVal=data.table(readRDS("SalesList.rds"))
                            )
     source("Server/FirmInfo.R",local=T)
     source("Server/CustomerCatInfo.R",local=T)
@@ -80,7 +89,6 @@ server <- shinyServer(function(input, output, session) {
     # source("Server/InvestmentInfo.R",local=T)
     # source("Server/OwnerInfo.R",local=T)
     # source("Server/TaxInfo.R",local=T)
- 
-    
+    source("Server/Sales.R",local=T)
 })
 

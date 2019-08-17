@@ -78,6 +78,8 @@ ui <- dashboardPage(skin="black",
                                   source("UI/AssetInfo.R",local=F),
                                   source("UI/AssetCatInfo.R",local=F),
                                   source("UI/PartnerInfo.R",local=F),
+                                  source("UI/Sales.R",local=F),
+                                  source("UI/SalesItem.R",local=F),
                                   # source("UI/TaxCatInfo.R",local=F),
                                   # source("UI/PartnerInfo.R",local=F),
                                   tabItems(
@@ -234,11 +236,24 @@ ui <- dashboardPage(skin="black",
                                                             checkboxInput("PartnerEditMode","Edit Mode",value = F),
                                                 div(DT::dataTableOutput("PartnerList"),style="font-size:100%;width=100%")
                                                 )
+                                            ),
+                                    tabItem(
+                                            tabName = "Sales",
+                                            box(id="SalesDetails",width = 12,height=1200,title = "Sales List",status="success",
+                                                uiOutput("SelectFirm"),
+                                                actionBttn( inputId = "SalesAdd", label = "New Entry", color = "primary", style = "gradient",size='sm' ),
+                                                br(),
+                                                checkboxInput("SalesEditMode","Edit Mode",value = F),
+                                                checkboxInput("SalesItemEditMode","Edit Mode",value = F),
+                                                br(),
+                                                div(DT::dataTableOutput("SalesList"),style="font-size:100%;width=100%")
                                             )
                                     )
+                                    
                                     )
                                     )
-                                  
+                                    )
+                                 
                                   
                      
  
