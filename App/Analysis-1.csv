@@ -1,0 +1,9 @@
+label,value,subtotal
+Total Sales,100,Recievables
+Total Reciept,-120,Recievables
+Total Purchase,-120,Payables
+Total Payments,70,Payables
+Expenses,-50,Income
+Change in Investments,70,Income
+Change in Liquidity,-100,Income
+Change In Inventory,60,Income

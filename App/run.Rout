@@ -22,7 +22,7 @@ Loading required package: shiny
 > folder_address = 'C://Users//dell//Documents//Assignments//BahiKhaata/App'
 > runApp(folder_address, launch.browser=TRUE)
 
-Listening on http://127.0.0.1:7193
+Listening on http://127.0.0.1:7931
 
 Attaching package: 'shinydashboard'
 
@@ -63,11 +63,5 @@ The following objects are masked from 'package:methods':
 
     removeClass, show
 
-Warning in file(filename, "r", encoding = encoding) :
-  cannot open file 'Server/SellerInfo.R': No such file or directory
-Warning: Error in file: cannot open the connection
-  49: file
-  48: source
-  47: server [C:\Users\dell\Documents\Assignments\BahiKhaata\App/server.R#45]
-Error in file(filename, "r", encoding = encoding) : 
-  cannot open the connection
+Warning: Error in HTML: object 'jscodeClick' not found
+  75: HTML

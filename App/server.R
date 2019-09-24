@@ -1,11 +1,14 @@
 
 library(shiny)
-library(shiny)
 library(ggplot2)
 library(plotly)
 library(DT)
 library(shinyjs)
 library(data.table)
+library(rhandsontable)
+library(sparkline)
+library(shinyBS)
+#library(P8)
 
 FirmMandatory <- c("FirmName")
 CustCatMandatory<-c("CustCatID","CustCategoryName")
@@ -71,10 +74,81 @@ server <- shinyServer(function(input, output, session) {
                            SellerListOut=data.table(readRDS("SellerList.rds")),
                            ProductListOut=data.table(readRDS("ProductList.rds")),
                            ItemListOut=data.table(readRDS("ItemList.rds")),
+                           PaymentItemListOut=data.table(readRDS("PaymentItemList.rds")),
+                           RecieptItemListOut=data.table(readRDS("PaymentItemList.rds")),
+                           PaymentListOut=data.table(readRDS("PaymentList.rds")),
+                           PurchaseListOut=data.table(readRDS("PurchaseList.rds")),
                            SalesListOut=data.table(readRDS("SalesList.rds")),
-                           ItemNo=0,
-                           SalesFilteredVal=data.table(readRDS("SalesList.rds"))
-                           )
+                           SourceListOut=data.table(readRDS("SourceList.rds")),
+                           PurchaseUnFilteredVal=data.table(readRDS("ItemList.rds")),
+                           PaymentUnFilteredVal=data.table(readRDS("PaymentList.rds")),
+                           SalesUnFilteredVal=data.table(readRDS("ItemList.rds")),
+                           RecieptUnFilteredVal=data.table(readRDS("PaymentItemList.rds"))
+    )
+    shinyjs::hide("SaveCatalog")
+  #   observe({
+  #     runjs("
+  # var inputs = $(':input').keypress(function(e){ 
+  # 
+  #   if (e.which == 13) {
+  #        e.preventDefault();
+  #        var nextInput = inputs.get(inputs.index(this) - 1);
+  #        if (nextInput) {
+  #        nextInput.focus();
+  #        }
+  #   }
+  #    
+  #   });"
+  #   )})
+  #   
+    observe({
+      runjs("
+  var inputs = $(':input').keypress(function(e){ 
+  
+    if (e.which == 13) {
+         e.preventDefault();
+         var nextInput = inputs.get(inputs.index(this) + 1);
+         if (nextInput) {
+         nextInput.focus();
+         }
+    }
+     
+    });"
+      )})
+    
+    
+    observe({
+      runjs("
+  var inputs = $(':input').keydown(function(e){ 
+  
+    if (e.which == 9) {
+         e.preventDefault();
+         var nextInput = inputs.get(inputs.index(this) - 1);
+         if (nextInput) {
+         nextInput.focus();
+         }
+    }
+    
+    });"
+      )})
+    
+    #observe(runjs(Css_to_focus_CustName))
+    # output$Eoutlet<-renderMenu({
+    #     Category=as.vector(unique(reac$ProdCatListOut$Category))
+    #     #menuItem(tabName = "EOutlet", "E-Outlet", icon = icon("cart"),badgeLabel = "new",startExpanded=T, badgeColor = "blue",
+    #     menuItem(tabName = "EOutlet", "E-Outlet", icon = icon("cart"),startExpanded=T,
+    #              lapply(1:length(Category),function(i){
+    #                  menuSubItem(text=(Category[i]),tabName=Category[i])
+    #                  #tabItems(tabItem(tabName = Category[i],rHandsontableOutput(paste0("Out","Category[i]"))))
+    #              })
+    #             )
+    #              })
+    # output$EoutletCatalog<-renderUI({
+    #     Category=as.vector(unique(reac$ProdCatListOut$Category))
+    #     if(any(Category==input$sidebar_menu)){
+    #     actionButton(paste0("Out",input$sidebar_menu),paste0("Out",input$sidebar_menu))}
+    # })
+    source("Server/Css.R",local=T)
     source("Server/FirmInfo.R",local=T)
     source("Server/CustomerCatInfo.R",local=T)
     source("Server/CustomerInfo.R",local=T)
@@ -82,13 +156,16 @@ server <- shinyServer(function(input, output, session) {
     source("Server/SellerInfo.R",local=T)
     source("Server/ProductCatInfo.R",local=T)
     source("Server/ProductInfo.R",local=T)
-    # source("Server/ExpenseInfo.R",local=T)
+    source("Server/Catalog.R",local=T)
+    source("Server/Sales_V1.R",local=T)
+    source("Server/Purchase.R",local=T)
+     # source("Server/ExpenseInfo.R",local=T)
     # source("Server/FinanceInfo.R",local=T)
     # source("Server/SpareInfo.R",local=T)
     # source("Server/BrokerInfo.R",local=T)
     # source("Server/InvestmentInfo.R",local=T)
     # source("Server/OwnerInfo.R",local=T)
     # source("Server/TaxInfo.R",local=T)
-    source("Server/Sales.R",local=T)
+    
 })
 

@@ -28,8 +28,9 @@ output$SalesFirmName<-renderText({
 output$SalesFirmDetails<-renderText({
   Str1<-paste0("Address    :",reac$FirmListOut[Name==input$FirmSelected,]$Address)
   Str2<-paste0("PhoneNo    :",reac$FirmListOut[Name==input$FirmSelected,]$PhoneNo)
-  Str3<-paste0("Description:",reac$FirmListOut[Name==input$FirmSelected,]$Description)
   Str4<-paste0("Email      :",reac$FirmListOut[Name==input$FirmSelected,]$Email)
+  Str4<-paste0("E-Outlet      :",reac$FirmListOut[Name==input$FirmSelected,]$Web)
+  Str3<-paste0("Description:",reac$FirmListOut[Name==input$FirmSelected,]$Description)
   HTML(paste(Str1,Str2,Str3,Str4,sep='<br/>'))
 })
 output$SalesCustomerName<-renderUI({
@@ -40,18 +41,18 @@ output$SalesCustomerAddress<-renderText({
 })
 output$SalesFirmLogo<-renderImage({
   #png(outfile, width=width, height=height)
-  #list(src=paste0("www/",input$FirmSelected,".png"),width=100,height=100)
-  list(src=paste0(input$FirmSelected,".png"),width=100,height=100)
+  list(src=paste0("www/",input$FirmSelected,".png"),width=100,height=100)
+  #list(src=paste0(input$FirmSelected,".png"),width=100,height=100)
 },deleteFile=FALSE)
 output$BahiKhaataLogo<-renderImage({
   #png(outfile, width=width, height=height)
-  #list(src=paste0("www/","BahiKhaataInvoiceLogo",".png"),width=200,height=150)
-  list(src=paste0("BahiKhaataInvoiceLogo",".png"),width=200,height=150)
+  list(src=paste0("www/","BahiKhaataInvoiceLogo",".png"),width=200,height=150)
+  #list(src=paste0("BahiKhaataInvoiceLogo",".png"),width=200,height=150)
 },deleteFile=FALSE)
 
 
 ItemformData<-reactive({
-  ItemformData<-cbind(No=1:nrow(reac$ItemListOut),reac$ItemListOut)
+  ItemformData<-cbind(No=0:nrow(reac$ItemListOut)-1,reac$ItemListOut)
 })
 observeEvent(input$SubmitItem,
               {
